@@ -1,0 +1,34 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.BRC' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form" [formGroup]="this.form">
+        <div class="row">
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.imprint_publisher')">
+                <mat-label>{{'APP.REQUEST.IMPRINT_PUBLISHER'| translate }}</mat-label>
+                <input matInput type="text" name="imprint_publisher" formControlName="imprint_publisher">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.imprint_place')">
+                <mat-label>{{'APP.REQUEST.IMPRINT_PLACE'| translate }}</mat-label>
+                <input matInput type="text" name="imprint_place" formControlName="imprint_place">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.imprint_isbn')">
+                <mat-label>{{'APP.REQUEST.IMPRINT_ISBN'| translate }}</mat-label>
+                <input matInput type="text" name="imprint_isbn" formControlName="imprint_isbn">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.partof_title')">
+                <mat-label>{{'APP.REQUEST.PARTOF_TITLE'| translate }}</mat-label>
+                <input matInput type="text" name="partof_title" formControlName="partof_title">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.partof_pages')">
+                <mat-label>{{'APP.REQUEST.PARTOF_PAGES'| translate }}</mat-label>
+                <input matInput type="text" name="partof_pages" formControlName="partof_pages">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.main-middle{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.mt4-5{
+    margin-top: 2rem;
+}
+
+.cc-window .cc-message .cc-link{
+    text-decoration: underline !important;
+    display: initial !important;
+    padding: initial !important;
+}
+
+.cc-window .cc-message .cc-link:hover{
+    text-decoration: none !important;
+}
+
+.cc-link.cc-link-text{
+    display: initial;
+    padding: initial;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+.mat-expansion-panel{
+	margin-top: 1em !important;
+}

@@ -1,0 +1,33 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.subjects')">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.SUBJECTS' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form">
+        <div class="row">
+            <div class="row" *ngFor="let control of form['controls']; let i=index">
+                <mat-form-field class="col-md-3">
+                    <mat-label>{{'APP.REQUEST.SUBJECT_TERM'| translate }}</mat-label>
+                    <input matInput type="text" name="term" [formControl]="control.get('term')">
+                </mat-form-field>
+                <mat-form-field class="col-md-3">
+                    <mat-label>{{'APP.REQUEST.SUBJECT_IDENTIFIER'| translate }}</mat-label>
+                    <input matInput type="text" name="identifier" [formControl]="control.get('identifier')">
+                </mat-form-field>
+                <mat-form-field class="col-md-3">
+                    <mat-label>{{'APP.REQUEST.SUBJECT_SCHEME'| translate }}</mat-label>
+                    <input matInput type="text" name="scheme" [formControl]="control.get('scheme')">
+                </mat-form-field>
+                <button class="col-md-1" *ngIf="!this.form.disabled" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="deleteSubject(i)">
+                    <mat-icon>delete_forever</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <button *ngIf="!this.form.disabled" mat-button color="primary" (click)="addSubject()">
+                <mat-icon>add</mat-icon> add another subject
+            </button>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

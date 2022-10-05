@@ -1,0 +1,46 @@
+.multiple-auto-complete {
+	margin-left: inherit;
+	margin-right: inherit;
+
+	.not-loading {
+		display: none;
+	}
+
+
+	.align-arrow-right {
+		// position: absolute;
+		right: 0;
+		// bottom: 0;
+		// vertical-align: middle;
+		cursor: pointer;
+		align-self: center;
+		color: rgba(0, 0, 0, 0.54);
+	}
+
+}
+
+.title-fn {
+	flex-grow: 1;
+    white-space: nowrap;
+    width: calc(100% - 16px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.option-icon {
+	mat-icon {
+		margin: 0px 5px 0px 10px;
+	}
+	mat-icon:hover {
+		color: #129d99;
+	}
+}
+
+.two-line-mat-option {
+	line-height: 1.2em;
+}
+
+:host ::ng-deep .mat-chip-list-wrapper {
+	max-height: 4.8em !important;
+	overflow: auto !important;
+}

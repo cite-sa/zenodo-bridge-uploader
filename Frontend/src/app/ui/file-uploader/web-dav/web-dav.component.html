@@ -1,0 +1,35 @@
+<mat-toolbar *ngIf="!webDavUser && showWebDavConnect">
+    <button mat-raised-button class="right-login-btn" (click)="openDialog()">Login</button>
+</mat-toolbar>
+<div *ngIf="webDavUser && showWebDavConnect">
+    <mat-toolbar>
+        <button mat-raised-button class="right-login-btn" (click)="openDialog()">Login</button>
+        <mat-icon *ngIf="(currentDepth)>0" class=" pointer" (click)="navigateUp()">arrow_back</mat-icon>
+        <span style="margin-left: 1px"> Files</span>
+    </mat-toolbar>
+    <mat-selection-list #files [multiple]="false" (selectionChange)="onSelcted(files.selectedOptions.selected)">
+        <mat-list-option *ngFor=" let file of fileList.files" [value]="file">
+            <div style="display:flex; justify-content:space-between;align-items:center">
+                <div style="display:flex;align-items:top">
+                    <mat-icon *ngIf="file.isFolder">folder
+                    </mat-icon>
+                    <mat-icon *ngIf="!file.isFolder">insert_drive_file
+                    </mat-icon>
+                    <div style="display:flex; flex-direction:column">
+                        <div>
+                            <h3 matLine> {{file.name}}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button *ngIf="!file.isFolder" mat-button type="submit" [disabled]="file.isFolder"
+                        (click)="this.addWebDavFileUrl(file)">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+        </mat-list-option>
+    </mat-selection-list>
+</div>
+<app-selected-file-view [form]="form"></app-selected-file-view>

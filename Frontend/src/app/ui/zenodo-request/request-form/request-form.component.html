@@ -1,0 +1,45 @@
+    <div class="row justify-content-md-center request-form">
+        <div class="col-md-8" *ngIf="this.formGroup">
+            <!-- {{formGroup?.value | json}} -->
+            <mat-card>
+                <mat-card-title>{{'APP.TITLE' | translate}}</mat-card-title>
+                <mat-card-actions [align]="'end'">
+                    <button mat-stroked-button color="primary" type="submit" (click)="this.authorize()" [disabled]="principal">
+                        Authorize
+                    </button>
+                </mat-card-actions>
+                    <mat-expansion-panel hideToggle *ngIf="this.editorModel?.validationContext?.shouldDisplay('upload.metadatajson')">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> {{'APP.REQUEST.SELECT_FILE'| translate }} (Metadata) </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <mat-form-field>
+                                <ngx-mat-file-input placeholder="{{'APP.REQUEST.SELECT_FILE'| translate }} (Metadata)"
+                                    [formControl]="fileMetadata" [multiple]="false" [color]="color">
+                                </ngx-mat-file-input>
+                            </mat-form-field>
+                        </div>
+                    </mat-expansion-panel>
+
+                    <app-forms-elements *ngIf="this.formGroup" [form]="this.formGroup" (panelOpenState)="panelOpenState"
+                        [editorModel]="this.editorModel"></app-forms-elements>
+
+                    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="this.editorModel?.validationContext?.shouldDisplay('upload.files.uploader') || this.editorModel?.validationContext?.shouldDisplay('upload.files.fileurls') || this.editorModel?.validationContext?.shouldDisplay('upload.files.webDav')" >
+                        <mat-expansion-panel-header>
+                            <mat-panel-title> {{'APP.REQUEST.UPLOAD_FILES'| translate }} </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-card-content>
+                            <div class="col-md-10 offset-md-1 pt-4  mb-4">
+                                <app-file-uploader [form]="this.formGroup" [editorModel]="this.editorModel"></app-file-uploader>
+                            </div>
+                        </mat-card-content>
+                    </mat-expansion-panel>
+                <mat-card-actions [align]="'end'">
+                    <button mat-stroked-button color="primary" type="submit"
+                        [disabled]="!formGroup.valid || !principal?.accessToken" (click)="formSubmit()">
+                        Submit
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>

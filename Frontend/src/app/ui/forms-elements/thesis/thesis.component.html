@@ -1,0 +1,43 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.THESIS' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form">
+        <div class="row"
+            *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.thesis_university')">
+            <mat-form-field class="col-md-12">
+                <mat-label>{{'APP.REQUEST.THESIS_UNIVERSITY'| translate }}</mat-label>
+                <input matInput type="text" name="thesis_university" [formControl]="form.get('thesis_university')">
+            </mat-form-field>
+        </div>
+        <div class="row"
+            *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.thesis_supervisors')">
+            <mat-label>{{'APP.REQUEST.THESIS_SUPERVISORS'| translate }} :</mat-label>
+            <div class="row"
+                *ngFor="let thesisSupervisorControl of this.form.get('thesis_supervisors')['controls']; let i=index">
+                <mat-form-field class="col-md-3">
+                    <mat-label>{{'APP.REQUEST.THESIS_SUPERVISOR_NAME'| translate }} :</mat-label>
+                    <input matInput type="text" name="name" [formControl]="thesisSupervisorControl.get('name')">
+                </mat-form-field>
+                <mat-form-field class="col-md-2">
+                    <mat-label>{{'APP.REQUEST.THESIS_SUPERVISOR_AFFILIATION'| translate }} :</mat-label>
+                    <input matInput type="text" name="affiliation"
+                        [formControl]="thesisSupervisorControl.get('affiliation')">
+                </mat-form-field>
+                <mat-form-field class="col-md-2">
+                    <mat-label>{{'APP.REQUEST.THESIS_SUPERVISOR_ORCHID'| translate }} :</mat-label>
+                    <input matInput type="text" name="orcid" [formControl]="thesisSupervisorControl.get('orcid')">
+                </mat-form-field>
+                <button class="col-md-1" *ngIf="!this.form.disabled" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="deleteThesisSupervisor(i)">
+                    <mat-icon>delete_forever</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.subjects')">
+            <button *ngIf="!this.form.disabled" mat-button color="primary" (click)="addThesisSupervisor()">
+                <mat-icon>add</mat-icon> add another thesis supervisor
+            </button>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

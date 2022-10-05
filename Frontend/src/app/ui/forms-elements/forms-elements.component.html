@@ -1,0 +1,45 @@
+<app-communities [form]="form?.get('deposit_metadata')?.get('communities')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.communities')"></app-communities>
+<app-upload-type [form]="form?.get('deposit_metadata')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.upload_type') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.image_type') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.publication_date')">
+</app-upload-type>
+<app-basic-information [form]="form?.get('deposit_metadata')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.doi') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.title') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.description') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.creators') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.keywords') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.version') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.language') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.notes')">
+</app-basic-information>
+<app-license [form]="form?.get('deposit_metadata')" (panelOpenState)="panelOpenState" [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.access_right') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.license') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.embargo_date') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.access_conditions')">
+</app-license>
+<app-funding [form]="form?.get('deposit_metadata')?.get('grants')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.grants')">
+</app-funding>
+<app-identifiers [form]="form?.get('deposit_metadata')?.get('related_identifiers')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.related_identifiers')">
+</app-identifiers>
+<app-contributors [form]="form?.get('deposit_metadata')?.get('contributors')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.contributors')"></app-contributors>
+<app-references [form]="form?.get('deposit_metadata')?.get('references')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.references')"></app-references>
+<app-journal [form]="form?.get('deposit_metadata')" (panelOpenState)="panelOpenState" [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_title') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_volume') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_issue') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_pages')">
+</app-journal>
+<app-conference [form]="form?.get('deposit_metadata')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_title') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_acronym') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_dates') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_url') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_session') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_session_part')">
+</app-conference>
+<app-book-report-chapter [form]="form?.get('deposit_metadata')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.imprint_publisher') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.imprint_place') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.imprint_isbn') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.partof_title') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.partof_pages')">
+</app-book-report-chapter>
+<app-thesis [form]="form?.get('deposit_metadata')" (panelOpenState)="panelOpenState" [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.thesis_university') || this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.thesis_supervisors')">
+</app-thesis>
+<app-subjects [form]="form?.get('deposit_metadata')?.get('subjects')" (panelOpenState)="panelOpenState"
+    [editorModel]="this.editorModel"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.subjects')"></app-subjects>

@@ -1,0 +1,51 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.UPLOAD_TYPE' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form">
+        <div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.upload_type')">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [formControl]="form.get('upload_type')">
+                <mat-radio-button class="example-radio-button" *ngFor="let upload_type of uploadTypesList"
+                    [value]="upload_type.value">
+                    {{upload_type.title}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="row"
+            *ngIf="form.get('upload_type')?.value == 'image' && this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.image_type')">
+            <mat-form-field class="col-md-12">
+                <mat-label>{{'APP.REQUEST.IMAGE_TYPE'| translate }} :</mat-label>
+                <mat-select [formControl]="form.get('image_type')">
+                    <mat-option *ngFor="let image_type of imageTypesList" [value]="image_type.value">
+                        {{image_type.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row"
+            *ngIf="this.form.get('upload_type')?.value == 'publication' && this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.publication_type')">
+            <mat-form-field class="col-md-12">
+                <mat-label>{{'APP.REQUEST.PUBLICATION_TYPE'| translate }} :</mat-label>
+                <mat-select [formControl]="form.get('publication_type')">
+                    <mat-option *ngFor="let publication_type of publicationTypesList" [value]="publication_type.value">
+                        {{publication_type.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row"
+            *ngIf="this.form.get('upload_type')?.value == 'publication' && this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.publication_date')">
+            <mat-form-field class="col-md-12">
+                <mat-label>{{'APP.REQUEST.PUBLICATION_DATE'| translate }} :</mat-label>
+                <input matInput [matDatepicker]="picker1" [formControl]="form.get('publication_date')">
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="form.get('publication_date')">
+                    {{'APP.REQUEST.DATE-VALIDATE' | translate}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

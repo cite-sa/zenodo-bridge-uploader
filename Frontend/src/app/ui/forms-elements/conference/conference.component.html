@@ -1,0 +1,50 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.CONFERENCE' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form" [formGroup]="this.form">
+        <div class="row">
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_title')">
+                <mat-label>{{'APP.REQUEST.CONFERENCE_TITLE'| translate }}</mat-label>
+                <input matInput type="text" name="conference_title" formControlName="conference_title">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_acronym')">
+                <mat-label>{{'APP.REQUEST.CONFERENCE_ACRONYM'| translate }}</mat-label>
+                <input matInput type="text" name="conference_acronym" formControlName="conference_acronym">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_dates')">
+                <mat-label>{{'APP.REQUEST.CONFERENCE_DATES'| translate }}</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="conference_dates">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('conference_dates').errors?.invalidDate">
+                    {{'APP.REQUEST.DATE-VALIDATE' | translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_place')">
+                <mat-label>{{'APP.REQUEST.CONFERENCE_PLACE'| translate }}</mat-label>
+                <input matInput type="text" name="conference_place" formControlName="conference_place">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_url')">
+                <mat-label>{{'APP.REQUEST.CONFERENCE_URL'| translate }}</mat-label>
+                <input matInput type="text" name="conference_url" formControlName="conference_url">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_session')">
+                <mat-label>{{'APP.REQUEST.CONFERENCE_SESSION'| translate }}</mat-label>
+                <input matInput type="text" name="conference_session" formControlName="conference_session">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.conference_session_part')">
+                <mat-label>{{'APP.REQUEST.CONFERENCE_SESSION_PART'| translate }}</mat-label>
+                <input matInput type="text" name="conference_session_part" formControlName="conference_session_part">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

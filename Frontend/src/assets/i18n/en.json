@@ -1,0 +1,117 @@
+{
+    "APP": {
+		"NAVIGATION": {
+			"TITLE": "Zenodo Bridge",
+			"PRIVACY-STATEMENT": "Privacy Statement",
+			"TERMS-OF-USE": "Terms of Use"
+		},
+        "LABELS":{
+            "COMMUNITIES": "Communities",
+            "BASIC_INFORMATION": "Basic Information",
+            "FUNDING": "Funding",
+            "UPLOAD_TYPE":"Upload Type",
+            "LICENSE": "License",
+            "RELATED_ALTERNATIVE_IDENTIFIERS": "Related/alternative identifiers",
+            "CONTRIBUTORS": "Contributors",
+            "REFERENCES": "References",
+            "JOURNAL": "Journal",
+            "CONFERENCE": "Conference",
+            "BRC": "Book/Report/Chapter",
+            "THESIS": "Thesis",
+            "SUBJECTS": "Subjects"
+        },
+        "TITLE": "Add Zenodo Request",
+        "SNACK-BAR": {
+            "SUCCESSFUL-LOGIN": "Successfull login",
+            "UNSUCCESSFUL-LOGIN": "Unsuccessful login"
+        },
+        "ACTIONS": {
+            "SUBMIT": "Submit",
+            "DELETE": "Delete"
+        },
+        "ERRORS": {
+            "URL-NOT-EMPTY": "The url must'n be empty",
+            "URL-NOT-VALID": "The url isn't valid",
+            "SELECTION_IS_REQUIRED": "Selection is required!"
+        },
+        "SUCCESS": {
+            "SUCCESS-UPLOAD-FILE": "Success upload file",
+            "SUCCESS-UPLOAD-REQUEST": "Success upload request"
+        },
+        "REQUEST": {
+            "COMMUNITY":"Community",
+            "DOI": "Digital Object Identifier",
+            "PUBLICATION_DATE": " Publication Date",
+            "PUBLICATION_DATES": " Publication Dates",
+            "START_DATE": " Start Date",
+            "END_DATE": " End Date",
+            "DESCRIPTION_DATE": " Description Date",
+            "TITLE": "Title",
+            "CREATORS": "Creators",
+            "CREATOR_NAME": "Family name,given names",
+            "CREATOR_AFFILIATION": "Affiliation",
+            "CREATOR_ORCHID": "Orcid",
+            "DESCRIPTION": "Description",
+            "VERSION": "Version",
+            "LANGUAGE": "Language",
+            "KEYWORDS": "Keywords",
+            "NOTES":"Notes",
+            "FILE": "File",
+            "ACCESS_RIGHT":"Access Right",
+            "EMBARGO_DATE": "Embargo Date",
+            "LICENSE": "License",
+            "RESTRICTED_CONDITIONS": "Conditions",
+            "GRANTS": "Grants",
+            "IDENTIFIERS": "Identifiers",
+            "IDENTIFIER": "Identifier",
+            "RELATION": "Relation",
+            "RESOURCE_TYPE": "Resource type",
+            "CONTRIBUTORS":"Contributors",
+            "CONTRIBUTOR_NAME": "Family name,given names",
+            "CONTRIBUTOR_AFFILIATION": "Affiliation",
+            "CONTRIBUTOR_ORCHID": "Orcid",
+            "TYPE": "Type",
+            "REFERENCES":"References",
+            "JOURNAL_TITLE": "Journal Title",
+            "JOURNAL_VOLUME": "Journal Volume",
+            "JOURNAL_ISSUE": "Journal Issue",
+            "JOURNAL_PAGES": "Journal Pages",
+            "CONFERENCE_TITLE": "Conference Title",
+            "CONFERENCE_ACRONYM": "Conference Acronym",
+            "CONFERENCE_DATES": "Conference Dates",
+            "CONFERENCE_PLACE": "Conference Place",
+            "CONFERENCE_URL": "Conference URL",
+            "CONFERENCE_SESSION": "Conference Session",
+            "CONFERENCE_SESSION_PART": "Conference Session Part",
+            "IMPRINT_PUBLISHER": "Publisher",
+            "IMPRINT_PLACE": "Place",
+            "IMPRINT_ISBN": "ISBN",
+            "PARTOF_TITLE": "Title",
+            "PARTOF_PAGES": "Pages",
+            "THESIS_UNIVERSITY": "Thesis university",
+            "THESIS_SUPERVISORS": "Thesis Supervisors",
+            "THESIS_SUPERVISOR_NAME": "Family name,given names",
+            "THESIS_SUPERVISOR_AFFILIATION": "Affiliation",
+            "THESIS_SUPERVISOR_ORCHID": "Orcid",
+            "SUBJECT_TERM": "Term",
+            "SUBJECT_IDENTIFIER": "Identifier",
+            "SUBJECT_SCHEME": "Scheme",
+            "IMAGE_TYPE": "Image Type",
+            "PUBLICATION_TYPE": "Publication Type",
+            "SELECT_FILE": "Select File",
+            "SELECT_FILES": "Select Files",
+            "SELECT_WEBDAV_FILES": "WebDav",
+            "UPLOAD_FILES": "Upload Files",
+            "DESCRIPTION-MINLENGTH-VALIDATE": "Description must be at least 3 characters long",
+            "NOTES-MINLENGTH-VALIDATE": "Notes must be at least 3 characters long",
+            "TITLE-MINLENGTH-VALIDATE": "Title must be at least 3 characters long",
+            "DATE-VALIDATE": "You cannot use future dates",
+            "END-DATE-VALIDATE": "End date shouldn't be less than start date"
+
+        },
+		"SUCCESS-COMPONENT": {
+			"TITLE": "Success!",
+			"MESSAGE": "Your files are queued to be deposited in Zenodo."
+		}
+    }
+}

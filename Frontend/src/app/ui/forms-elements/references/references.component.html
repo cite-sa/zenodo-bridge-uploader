@@ -1,0 +1,24 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.references')">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.REFERENCES' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form">
+        <div class="row">
+            <div class="row" *ngFor="let control of form['controls']; let i=index">
+                <mat-form-field class="col-md-12">
+                    <mat-label>{{'APP.REQUEST.REFERENCES'| translate }} :</mat-label>
+                    <input matInput type="text" name="reference" [formControl]="control">
+                    <mat-icon *ngIf="!this.form.disabled" matSuffix (click)="deleteReference(i)">
+                        delete_forever
+                    </mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <button *ngIf="!this.form.disabled" mat-button color="primary" (click)="addReference()">
+                <mat-icon>add</mat-icon> add another reference
+            </button>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

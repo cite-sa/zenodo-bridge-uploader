@@ -1,0 +1,137 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+	<mat-expansion-panel-header>
+		<mat-panel-title> {{'APP.LABELS.BASIC_INFORMATION' | translate}} </mat-panel-title>
+	</mat-expansion-panel-header>
+	<mat-card-content *ngIf="this.form" [formGroup]="this.form">
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.doi')">
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'APP.REQUEST.DOI'| translate }}</mat-label>
+				<input matInput type="text" name="doi" formControlName="doi">
+			</mat-form-field>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.title')">
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'APP.REQUEST.TITLE'| translate }}</mat-label>
+				<input matInput type="text" name="title" formControlName="title">
+				<mat-error *ngIf="this.form.get('title').hasError('minlength')">
+					{{'APP.REQUEST.TITLE-MINLENGTH-VALIDATE' | translate}}
+				</mat-error>
+			</mat-form-field>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.description')">
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'APP.REQUEST.DESCRIPTION'| translate }}</mat-label>
+				<textarea matInput name="description" formControlName="description">
+				</textarea>
+				<mat-error *ngIf="this.form.get('description').hasError('minlength')">
+					{{'APP.REQUEST.DESCRIPTION-MINLENGTH-VALIDATE' | translate}}
+				</mat-error>
+			</mat-form-field>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.creators')">
+			<mat-label>{{'APP.REQUEST.CREATORS'| translate }} :</mat-label>
+			<div class="row" *ngFor="let creator of this.form.get('creators')['controls']; let i=index">
+				<mat-form-field class="col-md-3">
+					<mat-label>{{'APP.REQUEST.CREATOR_NAME'| translate }} :</mat-label>
+					<input matInput type="text" name="name" [formControl]="creator.get('name')">
+				</mat-form-field>
+				<mat-form-field class="col-md-3">
+					<mat-label>{{'APP.REQUEST.CREATOR_AFFILIATION'| translate }} :</mat-label>
+					<input matInput type="text" name="affiliation" [formControl]="creator.get('affiliation')">
+				</mat-form-field>
+				<mat-form-field class="col-md-3">
+					<mat-label>{{'APP.REQUEST.CREATOR_ORCHID'| translate }} :</mat-label>
+					<input matInput type="text" name="orcid" [formControl]="creator.get('orcid')">
+				</mat-form-field>
+				<button class="col-md-1" *ngIf="!this.form.get('creators').disabled" matSuffix mat-icon-button
+					aria-label="Clear" (click)="deleteCreator(i)">
+					<mat-icon>delete_forever</mat-icon>
+				</button>
+			</div>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.creators')">
+			<button mat-button [disabled]="this.form.get('creators').disabled" color="primary" (click)="addCreator()">
+				<mat-icon>add</mat-icon> add another creator
+			</button>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.dates')">
+			<mat-label>{{'APP.REQUEST.PUBLICATION_DATES'| translate }} :</mat-label>
+			<div class="row" *ngFor="let control of this.form.get('dates')['controls']; let i=index">
+				<mat-form-field class="col-md-3">
+					<mat-label>{{'APP.REQUEST.START_DATE'| translate }} :</mat-label>
+					<input matInput [matDatepicker]="picker" [formControl]="control.get('start')">
+					<!--<input matInput [matDatepicker]="picker" [max]= "maxDate" [formControl]="date.get('start')" >-->
+					<mat-datepicker-toggle matSuffix [for]="picker">
+					</mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+					<mat-error *ngIf="control.get('start').hasError('invalidDate')">
+						{{'APP.REQUEST.DATE-VALIDATE' | translate}}
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="col-md-3">
+					<mat-label>{{'APP.REQUEST.END_DATE'| translate }} :</mat-label>
+					<input matInput [matDatepicker]="picker1" [formControl]="control.get('end')">
+					<!--<input matInput [matDatepicker]="picker1" [min] = "date.get('start').value" [max]= "maxDate" [formControl]="date.get('end')" >-->
+					<mat-datepicker-toggle matSuffix [for]="picker1">
+					</mat-datepicker-toggle>
+					<mat-datepicker #picker1></mat-datepicker>
+					<mat-error *ngIf="control.get('end').hasError('invalidDate')">
+						{{'APP.REQUEST.DATE-VALIDATE' | translate}}
+					</mat-error>
+				</mat-form-field>
+				<mat-form-field class="col-md-3">
+					<mat-label>{{'APP.REQUEST.DESCRIPTION_DATE'| translate }} :</mat-label>
+					<input matInput type="text" name="description" [formControl]="control.get('description')">
+				</mat-form-field>
+				<button class="col-md-1" *ngIf="!this.form.get('dates').disabled" matSuffix mat-icon-button
+					aria-label="Clear" (click)="deleteDate(i)">
+					<mat-icon>delete_forever</mat-icon>
+				</button>
+				<mat-error *ngIf="control.hasError('dates')">
+					{{'APP.REQUEST.END-DATE-VALIDATE' | translate}}
+				</mat-error>
+			</div>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.dates')">
+			<button mat-button [disabled]="this.form.get('dates').disabled" color="primary" (click)="addDate()">
+				<mat-icon>add</mat-icon> add another date
+			</button>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.keywords')">
+			<mat-label>{{'APP.REQUEST.KEYWORDS'| translate }} :</mat-label>
+			<div class="row" *ngFor="let keyword of this.form.get('keywords')['controls']; let i=index">
+				<mat-form-field class="col-md-12">
+					<mat-label>{{'APP.REQUEST.KEYWORDS'| translate }} :</mat-label>
+					<input matInput type="text" name="keywords" [formControl]="keyword">
+					<mat-icon *ngIf="!this.form.get('keywords').disabled" matSuffix (click)="deleteKeyword(i)">
+						delete_forever
+					</mat-icon>
+				</mat-form-field>
+			</div>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.keywords')">
+			<button mat-button color="primary" [disabled]="this.form.get('keywords').disabled" (click)="addKeyword()">
+				<mat-icon>add</mat-icon> add another keyword
+			</button>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.version')">
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'APP.REQUEST.VERSION'| translate }}</mat-label>
+				<input matInput type="text" name="version" formControlName="version">
+			</mat-form-field>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.language')">
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'APP.REQUEST.LANGUAGE'| translate }}</mat-label>
+				<input matInput type="text" name="language" formControlName="language">
+			</mat-form-field>
+		</div>
+		<div class="row" *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.notes')">
+			<mat-form-field class="col-md-12">
+				<mat-label>{{'APP.REQUEST.NOTES'| translate }}</mat-label>
+				<textarea matInput name="additional_notes" formControlName="notes">
+				</textarea>
+			</mat-form-field>
+		</div>
+	</mat-card-content>
+</mat-expansion-panel>

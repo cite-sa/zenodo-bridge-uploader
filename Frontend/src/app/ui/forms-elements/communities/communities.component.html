@@ -1,0 +1,19 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+	*ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.communities')">
+	<mat-expansion-panel-header>
+		<mat-panel-title> {{'APP.LABELS.COMMUNITIES'| translate }} </mat-panel-title>
+	</mat-expansion-panel-header>
+	<mat-card-content *ngIf="this.form">
+		<div class="row" *ngFor="let control of form['controls']; let i = index">
+			<app-community [control]="control.get('value')" [index]="i" (onDeleteItem)="this.deleteCommunity($event)" [disabled]="this.editorModel?.validationContext?.isDisabled('deposit_metadata.communities')">
+			</app-community>
+			<mat-error *ngIf="form.controls[i].hasError('required')">{{'APP.ERRORS.SELECTION_IS_REQUIRED'| translate }}
+			</mat-error>
+		</div>
+		<div class="row" *ngIf="!this.editorModel?.validationContext?.isDisabled('deposit_metadata.communities')">
+			<button (click)="this.addItem()" mat-button color="primary">
+				<mat-icon>add</mat-icon> add another community
+			</button>
+		</div>
+	</mat-card-content>
+</mat-expansion-panel>

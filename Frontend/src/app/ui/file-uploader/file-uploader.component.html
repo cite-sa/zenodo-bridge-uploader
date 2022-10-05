@@ -1,0 +1,12 @@
+<mat-tab-group mat-align-tabs="start">
+    <mat-tab label="{{'APP.REQUEST.SELECT_FILES'| translate }}" *ngIf="this.editorModel?.validationContext?.shouldDisplay('upload.files.uploader')" >
+        <app-dropzone [control]="this.form.get('filesToUpload')"></app-dropzone>
+    </mat-tab>
+    <mat-tab label="{{'APP.REQUEST.SELECT_FILES'| translate }} Urls" *ngIf="this.editorModel?.validationContext?.shouldDisplay('upload.files.fileurls')">
+        <app-file-url-list [form]="this.form.get('file_urls')"></app-file-url-list>
+    </mat-tab>
+    <mat-tab label="{{'APP.REQUEST.SELECT_WEBDAV_FILES'| translate }} Urls" *ngIf="this.editorModel?.validationContext?.shouldDisplay('upload.files.webDav')">
+        <app-web-dav [form]="this.form.get('web_dav_urls')" [showWebDavConnect]="this.editorModel?.validationContext?.shouldDisplay('upload.files.webDavConnect')"></app-web-dav>
+    </mat-tab>
+
+</mat-tab-group>

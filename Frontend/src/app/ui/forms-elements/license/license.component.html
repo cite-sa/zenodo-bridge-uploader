@@ -1,0 +1,58 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.LICENSE' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form" [formGroup]="this.form">
+        <div class="row" required
+            *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.access_right')">
+            <mat-radio-group formControlName="access_right" aria-labelledby="example-radio-group-label"
+                class="example-radio-group">
+                <mat-radio-button class="example-radio-button" *ngFor="let access_right of accessRightsList"
+                    [value]="access_right">
+                    {{access_right}}
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="row"
+            *ngIf="form.get('access_right')?.value == 'open' && this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.license')">
+            <mat-form-field>
+                <mat-label>{{'APP.REQUEST.LICENSE'| translate }} :</mat-label>
+                <div class="row align-items-center">
+                    <app-single-auto-complete formControlName="license"
+                        [configuration]="this.publisherAutocompleteConfiguration">
+                    </app-single-auto-complete>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="row"
+            *ngIf="form.get('access_right')?.value == 'embargoed' && this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.embargo_date')">
+            <mat-form-field class="col-md-12">
+                <mat-label>{{'APP.REQUEST.EMBARGO_DATE'| translate }}</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="embargo_date">
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="form.get('embargo_date').errors?.invalidDate">
+                    {{'APP.REQUEST.DATE-VALIDATE' | translate}}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>{{'APP.REQUEST.LICENSE'| translate }} :</mat-label>
+                <div class="row align-items-center">
+                    <app-single-auto-complete formControlName="license"
+                        [configuration]="this.publisherAutocompleteConfiguration">
+                    </app-single-auto-complete>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="row"
+            *ngIf="form.get('access_right')?.value == 'restricted' && this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.access_conditions')">
+            <mat-form-field class="col-md-12">
+                <mat-label>{{'APP.REQUEST.RESTRICTED_CONDITIONS'| translate }}</mat-label>
+                <textarea matInput placeholder="Restricted conditions" name="access_conditions"
+                    formControlName="access_conditions" required>
+                </textarea>
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

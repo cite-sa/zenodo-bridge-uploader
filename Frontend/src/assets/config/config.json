@@ -1,0 +1,15 @@
+{
+  "server": "APIURL/api/",
+  "App": "URL",
+  "ZenodoApiUrl": "https://sandbox.zenodo.org/",
+  "defaultCulture": "en-US",
+  "loginProvider": {
+    "zenodoConfiguration": {
+      "clientId": "CLIENTID",
+      "oauthUrl": "https://sandbox.zenodo.org/oauth/authorize",
+      "redirectUri": "URL/login/external/zenodo"
+    }
+  },
+  "privacyStatementUrl": "URL/assets/static-pages/privacy-statement.html",
+  "termsOfUseUrl": "URL/assets/static-pages/terms-of-use.html"
+}

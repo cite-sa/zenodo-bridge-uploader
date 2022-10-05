@@ -1,0 +1,59 @@
+{
+    "APP": {
+		"NAVIGATION": {
+			"PRIVACY-STATEMENT": "Δήλωση προστασίας προσωπικών δεδομένων",
+			"TERMS-OF-USE": "Οροι χρήσης"
+		},
+        "LABELS":{
+            "COMMUNITIES": "Κοινότητες",
+            "BASIC_INFORMATION": "Βασικές Πληροφορίες",
+            "FUNDING": "Χρηματοδότηση",
+            "UPLOAD_TYPE":"Είδος Ανεβάσματος",
+            "LICENSE": "Άδεια"
+        },
+        "TITLE": "Προσθήκη Αίτησης Zenodo",
+        "SNACK-BAR": {
+            "SUCCESSFUL-LOGIN": "Επιτυχής σύνδεση",
+            "UNSUCCESSFUL-LOGIN": "Αποτυχημένη σύνδεση"
+        },
+        "ACTIONS": {
+            "SUBMIT": "Υποβολή",
+            "DELETE": "Διαγραφή"
+        },
+        "ERRORS": {
+            "URL-NOT-EMPTY": "Το url δεν μπορεί να είναι κενό",
+            "URL-NOT-VALID": "Το url δεν είναι έγκυρο"
+        },
+        "SUCCESS": {
+            "SUCCESS-UPLOAD-FILE": "Επιτυχής εισαγωγή αρχείου",
+            "SUCCESS-UPLOAD-REQUEST": "Επιτυχής εισαγωγή αίτησης"
+        },
+        "REQUEST": {
+            "COMMUNITY":" Κοινότητα",
+            "DIGITAL_OBJECT_IDENTIFIER": "Αναγνωριστικό Ψηφιακού Αντικειμένου",
+            "PUBLICATION_DAY": "Ημερομηνία Έκδοσης",
+            "TITLE": "Τίτλος",
+            "AUTHORS": "Συγγραφείς",
+            "DESCRIPTION": "Περιγραφή",
+            "VERSION": "Εκδοχή",
+            "PRIMARY_LANGUAGE": "Γλώσσα",
+            "KEYWORDS": "Λέξεις-κλειδιά",
+            "ADDITIONAL_NOTES": "Επιπρόσθετες σημειώσεις",
+            "ACCESS_RIGHT":"Δικαίωμα Πρόσβασης",
+            "EMBARGO_DATE": "Ημέρα Εμπάργκου",
+            "RESTRICTED_CONDITION": "Συνθήκες",
+            "GRANTS": "Επιχορήγηση",
+            "FILE": "Αρχείο",
+            "SELECT_FILE": "Επιλογή Αρχείου",
+            "SELECT_FILES": "Επιλογή Αρχείων",
+            "SELECT_WEBDAV_FILES": "Επιλογή Αρχείων Από Tο webDav",
+            "UPLOAD_FILES": "Εισαγωγή Αρχείων",
+            "DESCRIPTION-MINLENGTH-VALIDATE": "H περιγραφή πρέπει να έχει τουλαχιστον 3 χαρακτήρες",
+            "TITLE-MINLENGTH-VALIDATE": "H τίτλος πρέπει να έχει τουλαχιστον 3 χαρακτήρες"
+        },
+		"SUCCESS-COMPONENT": {
+			"TITLE": "Επιτυχής μεταφόρτωση!",
+			"MESSAGE": "Τα αρχεία έχουν αποσταλεί με επιτυχία στο Zenodo."
+		}
+    }
+}

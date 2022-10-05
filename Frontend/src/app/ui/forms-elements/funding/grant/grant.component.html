@@ -1,0 +1,12 @@
+<div class="row align-items-center">
+	<mat-form-field *ngIf="this.control" class="col-md-11">
+		<mat-label>{{'APP.REQUEST.GRANTS'| translate }}</mat-label>
+		<app-single-auto-complete [formControl]="this.control"
+			[configuration]="this.publisherAutocompleteConfiguration">
+		</app-single-auto-complete>
+	</mat-form-field>
+	<button class="col-md-1" *ngIf="this.control && !this.control.disabled" matSuffix mat-icon-button aria-label="Clear"
+		(click)="this.onDeleteItem.emit(this.index)">
+		<mat-icon>delete_forever</mat-icon>
+	</button>
+</div>

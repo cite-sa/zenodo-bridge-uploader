@@ -1,0 +1,29 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.JOURNAL' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form" [formGroup]="this.form">
+        <div class="row">
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_title')">
+                <mat-label>{{'APP.REQUEST.JOURNAL_TITLE'| translate }}</mat-label>
+                <input matInput type="text" name="journal_title" formControlName="journal_title">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_volume')">
+                <mat-label>{{'APP.REQUEST.JOURNAL_VOLUME'| translate }}</mat-label>
+                <input matInput type="text" name="journal_volume" formControlName="journal_volume">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_issue')">
+                <mat-label>{{'APP.REQUEST.JOURNAL_ISSUE'| translate }}</mat-label>
+                <input matInput type="text" name="journal_issue" formControlName="journal_issue">
+            </mat-form-field>
+            <mat-form-field class="col-md-12"
+                *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.journal_pages')">
+                <mat-label>{{'APP.REQUEST.JOURNAL_PAGES'| translate }}</mat-label>
+                <input matInput type="text" name="journal_pages" formControlName="journal_pages">
+            </mat-form-field>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>

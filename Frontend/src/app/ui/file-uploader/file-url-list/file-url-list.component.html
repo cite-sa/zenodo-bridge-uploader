@@ -1,0 +1,53 @@
+<div class="row" *ngFor="let control of form['controls']; let i = index">
+    <mat-form-field *ngIf="control" class="col-md-11">
+        <mat-label>{{'APP.REQUEST.FILE' | translate}} Url</mat-label>
+        <input matInput type="text" [formControl]="control" />
+        <mat-error *ngIf="control.hasError('required')">{{'APP.ERRORS.URL-NOT-EMPTY' | translate}}
+        </mat-error>
+        <mat-error *ngIf="control.hasError('pattern')">{{'APP.ERRORS.URL-NOT-VALID' | translate}}
+        </mat-error>
+    </mat-form-field>
+    <button class="col-md-1" *ngIf="this.control && !this.control.disabled" matSuffix mat-icon-button aria-label="Clear"
+        (click)="this.deleteItem(i)">
+        <mat-icon>delete_forever</mat-icon>
+    </button>
+</div>
+<div class="row" *ngIf="!form.disabled">
+    <button (click)="this.addItem()" mat-button color="primary">
+        <mat-icon>add</mat-icon> add another file url
+    </button>
+</div>
+
+
+
+<!-- <div class="container pt-2">
+    <form class="row  overflow-hidden" [formGroup]="myForm">
+        <div class="col-md-11 ">
+            <mat-form-field [style.width.%]="100">
+                <mat-label>{{'APP.REQUEST.FILE' | translate}} Url</mat-label>
+                <input matInput type="text" formControlName="url" />
+                <div *ngIf="url.errors && (url.dirty || url.touched)">
+                    <mat-error *ngIf="url.errors?.required">{{'APP.ERRORS.URL-NOT-EMPTY' | translate}}</mat-error>
+                    <mat-error *ngIf="url.errors?.pattern">{{'APP.ERRORS.URL-NOT-VALID' | translate}}</mat-error>
+                </div>
+            </mat-form-field>
+        </div>
+        <div class="col-auto p-0  align-self-center">
+            <button mat-button class="option-inline-button" type="submit" [disabled]="!myForm.valid"
+                (click)="addFileUrl()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </form>
+    <div class=" row">
+        <mat-selection-list class="col-md-12 file-url-list overflow-auto" [multiple]="false">
+            <mat-list-item *ngFor="let url of urlList; let j = index">
+                <div mat-line>{{url}}</div>
+                <button mat-icon-button (click)="removeFileUrl(j)">
+                    <mat-icon class=" mat-24">delete</mat-icon>
+                </button>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-selection-list>
+    </div>
+</div> -->

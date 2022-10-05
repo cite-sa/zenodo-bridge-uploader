@@ -1,0 +1,62 @@
+server:
+  port: 8080
+
+spring:
+  http:
+    log-request-details: true
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: validate
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+        format_sql: true
+  logging:
+    level:
+      org:
+        hibernate:
+          type: trace
+  servlet:
+    multipart:
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+
+web:
+  cors:
+    enabled: true
+    allowed-origins: [ URL ]
+    allowed-headers: [ Authorization, Cache-Control, Content-Type, Content-Disposition ]
+    exposed-headers: [ Authorization, Cache-Control, Content-Type, Content-Disposition ]
+
+frontend:
+  url: URL
+
+zenodo:
+  zenodo-url: https://sandbox.zenodo.org/api/
+  zenodo-access_token: TOKEN
+  zenodo-login-access-token-url: https://sandbox.zenodo.org/oauth/token
+  zenodo-login-client-id: CLIENTID
+  zenodo-login-client-secret: CLIENTSECRET
+  zenodo-login-redirect-url: URL/login/external/zenodo
+
+task:
+  fixed-delay: 30000
+
+storage:
+  store-path: PATH
+
+encryption:
+  db-key: KEY
+
+webdavlocations:
+  locations:
+    -
+      name: nextcloud
+      url: NEXTCLOUDURL
+      username: USERNAME
+      password: SECRET

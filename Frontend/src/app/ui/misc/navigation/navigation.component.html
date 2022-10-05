@@ -1,0 +1,21 @@
+<mat-toolbar class="navigation-bar row" color="primary">
+	<a class="col-auto app-logo" routerLink="/">
+		<img class="app-logo-image" src="assets/images/app-logo_0.png" alt="Neanias">
+	</a>
+	<div class="col-auto">
+		<span>{{'APP.NAVIGATION.TITLE' | translate}}</span>
+	</div>
+	<div class="col"></div>
+	<div class="col-auto">
+		<a mat-button class="urlbutton" *ngIf="this.installationConfigurationService.privacyStatementUrl"
+			(click)="goToExternalLink(this.installationConfigurationService.privacyStatementUrl)">{{'APP.NAVIGATION.PRIVACY-STATEMENT'
+			| translate}}</a>
+		<span *ngIf="this.installationConfigurationService.privacyStatementUrl">|</span>
+		<a mat-button class="urlbutton" *ngIf="this.installationConfigurationService.termsOfUseUrl"
+			(click)="goToExternalLink(this.installationConfigurationService.termsOfUseUrl)">{{'APP.NAVIGATION.TERMS-OF-USE'
+			| translate}}</a>
+	</div>
+</mat-toolbar>
+<div *ngIf="progressIndication" class="progress-bar">
+	<mat-progress-bar color="accent" mode="indeterminate"></mat-progress-bar>
+</div>

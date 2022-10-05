@@ -1,0 +1,42 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+    *ngIf="this.editorModel?.validationContext?.shouldDisplay('deposit_metadata.contributors')">
+    <mat-expansion-panel-header>
+        <mat-panel-title> {{'APP.LABELS.CONTRIBUTORS' | translate}} </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card-content *ngIf="this.form">
+        <div class="row">
+            <mat-label>{{'APP.REQUEST.CONTRIBUTORS'| translate }} :</mat-label>
+            <div class="row" *ngFor="let control of this.form['controls']; let i=index">
+                <mat-form-field class="col-md-3">
+                    <mat-label>{{'APP.REQUEST.CONTRIBUTOR_NAME'| translate }} :</mat-label>
+                    <input matInput type="text" name="name" [formControl]="control.get('name')">
+                </mat-form-field>
+                <mat-form-field class="col-md-2">
+                    <mat-label>{{'APP.REQUEST.CONTRIBUTOR_AFFILIATION'| translate }} :</mat-label>
+                    <input matInput type="text" name="affiliation" [formControl]="control.get('affiliation')">
+                </mat-form-field>
+                <mat-form-field class="col-md-2">
+                    <mat-label>{{'APP.REQUEST.CONTRIBUTOR_ORCHID'| translate }} :</mat-label>
+                    <input matInput type="text" name="orcid" [formControl]="control.get('orcid')">
+                </mat-form-field>
+                <mat-form-field class="col-md-3">
+                    <mat-label>{{'APP.REQUEST.TYPE'| translate }}</mat-label>
+                    <mat-select [formControl]="control.get('type')">
+                        <mat-option *ngFor="let type of typeList" [value]="type.value">
+                            {{ type.title }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button class="col-md-1" *ngIf="!this.form.disabled" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="deleteContibutor(i)">
+                    <mat-icon>delete_forever</mat-icon>
+                </button>
+            </div>
+        </div>
+        <div class="row" *ngIf="!this.form.disabled">
+            <button mat-button color="primary" (click)="addContributor()">
+                <mat-icon>add</mat-icon> add another contibutor
+            </button>
+        </div>
+    </mat-card-content>
+</mat-expansion-panel>
